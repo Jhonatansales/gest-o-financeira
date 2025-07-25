@@ -1,0 +1,374 @@
+/* FICHEIRO: src/index.css */
+/* Versão corrigida e completa dos estilos para os 3 novos temas. */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Lato:wght@400;700&family=Nunito:wght@400;600;700&family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&family=Quicksand:wght@500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definição das Variáveis de CSS para os Temas */
+:root {
+  /* Variáveis Padrão (usadas como fallback) */
+  --bg-main: #F0F4F8;
+  --bg-card: #FFFFFF;
+  --text-primary: #1E293B;
+  --text-secondary: #64748B;
+  --text-title: #0F172A;
+  --border-color: #E2E8F0;
+  --accent-color: #3B82F6;
+  --shadow-color: rgba(0, 0, 0, 0.05);
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+body.theme-aurora {
+  --bg-main: linear-gradient(180deg, #0D1B2A 0%, #1B263B 100%);
+  --bg-card: rgba(27, 38, 59, 0.6);
+  --text-primary: #E0E1DD;
+  --text-secondary: #94A3B8;
+  --text-title: #FFFFFF;
+  --border-color: rgba(167, 255, 131, 0.2);
+  --accent-color: #A7FF83;
+  --shadow-color: rgba(167, 255, 131, 0.1);
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+body.theme-papel-tinta {
+  --bg-main: #343A40;
+  --bg-card: #495057;
+  --text-primary: #FDF8E1;
+  --text-secondary: #CED4DA;
+  --text-title: #D4AF37;
+  --border-color: #D4AF37;
+  --accent-color: #D4AF37;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Lato', sans-serif;
+}
+
+body.theme-solarpunk {
+  --bg-main: #E8F5E9;
+  --bg-card: #FFFFFF;
+  --text-primary: #2F4858;
+  --text-secondary: #5A7D7C;
+  --text-title: #2F4858;
+  --border-color: #B2DFDB;
+  --accent-color: #FFA726;
+  --shadow-color: rgba(38, 166, 154, 0.1);
+  --font-heading: 'Nunito', sans-serif;
+  --font-body: 'Quicksand', sans-serif;
+}
+
+/* Estilo Base do Body */
+body {
+  background: var(--bg-main);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  transition: background 0.5s ease;
+  min-height: 100vh;
+}
+
+/* Componentes Temáticos */
+.header-title {
+  @apply text-3xl font-bold;
+  color: var(--text-title);
+  font-family: var(--font-heading);
+}
+.header-subtitle {
+  color: var(--text-secondary);
+}
+
+.summary-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 12px var(--shadow-color);
+  @apply p-6 rounded-xl transition-all duration-300;
+}
+.theme-aurora .summary-card {
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--border-color);
+}
+.theme-papel-tinta .summary-card {
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.2), 0 2px 2px rgba(0,0,0,0.1);
+}
+.theme-solarpunk .summary-card {
+  border-radius: 1rem;
+  box-shadow: 0 4px 14px var(--shadow-color);
+}
+
+
+.card-title {
+  color: var(--text-secondary);
+  @apply font-semibold;
+}
+
+.card-value {
+  @apply text-3xl font-bold mt-2;
+}
+.theme-aurora .card-value.text-green-400 { color: #A7FF83; }
+.theme-aurora .card-value.text-red-400 { color: #F72585; }
+.theme-aurora .card-value.text-blue-400 { color: #00F5D4; }
+.theme-aurora .card-value.text-purple-400 { color: #7B2CBF; }
+.theme-aurora .card-value.text-orange-400 { color: #fca311; }
+
+.theme-papel-tinta .card-value.text-green-400 { color: #009B77; }
+.theme-papel-tinta .card-value.text-red-400 { color: #800020; }
+.theme-papel-tinta .card-value.text-blue-400 { color: #4a90e2; }
+.theme-papel-tinta .card-value.text-purple-400 { color: #9013fe; }
+.theme-papel-tinta .card-value.text-orange-400 { color: #f5a623; }
+
+.theme-solarpunk .card-value.text-green-400 { color: #26A69A; }
+.theme-solarpunk .card-value.text-red-400 { color: #E57373; }
+.theme-solarpunk .card-value.text-blue-400 { color: #2979ff; }
+.theme-solarpunk .card-value.text-purple-400 { color: #7e57c2; }
+.theme-solarpunk .card-value.text-orange-400 { color: #ff7043; }
+
+
+.main-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 12px var(--shadow-color);
+  @apply p-6 rounded-xl;
+}
+
+.card-header {
+  color: var(--text-title);
+  font-family: var(--font-heading);
+  @apply text-xl font-bold mb-4 flex items-center gap-2;
+}
+
+.signout-button {
+  color: var(--text-secondary);
+  @apply text-sm font-semibold hover:opacity-80 transition-opacity;
+}
+
+/* Seletor de Temas */
+.theme-switcher-container {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  @apply flex items-center p-1 rounded-full shadow-sm;
+}
+.theme-switcher-icon {
+  color: var(--text-secondary);
+  @apply mx-2;
+}
+.theme-buttons {
+  @apply flex items-center;
+}
+.theme-button {
+  color: var(--text-secondary);
+  @apply px-3 py-1 text-sm font-semibold rounded-full transition-all duration-300;
+}
+.theme-button.active {
+  background-color: var(--accent-color);
+  color: var(--bg-card) !important; /* Ensure text color contrasts with accent */
+}
+.theme-papel-tinta .theme-button.active {
+  color: #343A40 !important;
+}
+.theme-button:not(.active):hover {
+  color: var(--text-primary);
+}
+
+/* Estilos da Página de Autenticação */
+.auth-card {
+  background-color: var(--bg-card);
+}
+.auth-title {
+  color: var(--text-title);
+  font-family: var(--font-heading);
+}
+.auth-input {
+  background-color: var(--bg-main);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+  @apply w-full px-4 py-2 border rounded-lg focus:ring-2;
+}
+.auth-button {
+  background: var(--accent-color);
+  color: var(--bg-card);
+  @apply w-full px-4 py-2 font-bold rounded-lg transition-all duration-300;
+}
+.theme-papel-tinta .auth-button {
+  color: #343A40;
+}
+
+/* Animações de Botão */
+.theme-aurora .auth-button:hover {
+  box-shadow: 0 0 15px var(--shadow-color);
+  transform: scale(1.02);
+}
+.theme-papel-tinta .auth-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
+.theme-solarpunk .auth-button {
+  border-radius: 9999px;
+}
+.theme-solarpunk .auth-button:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+.auth-switch-text {
+  color: var(--text-secondary);
+}
+.auth-switch-button {
+  color: var(--accent-color);
+  @apply ml-1 font-semibold hover:underline;
+}
+
+/* Mobile Optimizations */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+@media (max-width: 768px) {
+  .mobile-optimized {
+    padding: 1rem;
+  }
+  
+  .mobile-optimized .card-hover {
+    transform: none;
+    transition: box-shadow 0.2s ease;
+  }
+  
+  .mobile-optimized .card-hover:hover {
+    transform: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Animations for mobile */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from { 
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to { 
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slideIn {
+  animation: slideIn 0.4s ease-out;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.3s ease-out;
+}
+
+/* Responsive grid improvements */
+@media (max-width: 640px) {
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .sm\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Better touch interactions */
+@media (hover: none) and (pointer: coarse) {
+  .hover\:scale-105:hover {
+    transform: none;
+  }
+  
+  .hover\:-translate-y-1:hover {
+    transform: none;
+  }
+  
+  .card-hover:hover {
+    transform: none;
+  }
+}
+
+/* Improved scrolling on mobile */
+@supports (-webkit-overflow-scrolling: touch) {
+  .overflow-y-auto {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Safe area for devices with notches */
+@supports (padding: max(0px)) {
+  .safe-area-top {
+    padding-top: max(1rem, env(safe-area-inset-top));
+  }
+  
+  .safe-area-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}
+
+/* Fix for horizontal line issue on desktop */
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure proper flexbox layout */
+.layout-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.content-area {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Mobile optimizations for chat positioning */
+@media (max-width: 768px) {
+  .chat-button-mobile {
+    bottom: 6rem !important;
+    right: 1.5rem !important;
+  }
+  
+  .fab-mobile {
+    bottom: 7rem !important;
+    right: 1.5rem !important;
+  }
+}
