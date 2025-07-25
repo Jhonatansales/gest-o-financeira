@@ -1,3 +1,4 @@
+
 // FICHEIRO: src/App.tsx
 // Versão com o fluxo de cadastro corrigido e melhorado.
 
